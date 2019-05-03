@@ -47,13 +47,14 @@ function stop () {
     clearInterval(intervalId);
 };
 
+
 function game() {
     for ( let i=0; i<QUESTIONS.length; i++) {
         let qT = $("<p>");
         let now = QUESTIONS[i].question;
         qT.text(now);
         $("#questions").append(qT);
-
+        
         let answer1 = $("<p>");
         let a1 = QUESTIONS[i].answer[0];
         answer1.text(a1);
@@ -63,33 +64,33 @@ function game() {
         let a2 = QUESTIONS[i].answer[1];
         answer2.text(a2);
         $("#q2").append(answer2);
-
+        
         let answer3 = $("<p>");
         let a3 = QUESTIONS[i].answer[2];
         answer3.text(a3);
         $("#q3").append(answer3);
-
+        
         let answer4 = $("<p>");
         let a4 = QUESTIONS[i].answer[3];
         answer4.text(a4);
         $("#q4").append(answer4);
-
+        
         $("#answers p").on("click", function(){
-        game();
-        });
-        for (let j=0; j<QUESTIONS[i].answers.length; j++) {
-            if (QUESTIONS[i].correctAnswer == QUESTIONS[i].answer[j]) {
-                alert("good job! next question")
-            }
-            else {
-                alert("sorry you lose!")
-                stop();
-                $("#start").show();
-                timer = 0;
-                
-            }
-        }
+        
+            for (let j=0; j<QUESTIONS[i].answers.length; j++) {
+                if (QUESTIONS[i].correctAnswer == QUESTIONS[i].answer[j]) {
+                    alert("good job! next question")
+                }
+                else {
+                    alert("sorry you lose!")
+                    stop();
+                    $("#start").show();
+                    timer = 0;
+                    
+                    }
+                }
+            });
+        }   
     }
-}
 
 });
